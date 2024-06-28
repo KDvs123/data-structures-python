@@ -37,6 +37,38 @@ class LinkedList:
         
         return count
     
+    def remove_by_value(self,data):
+        count=0
+        itr=self.head
+        while itr:
+            if itr.data==data:
+                self.remove_at(count)
+                break
+            count+=1
+            itr=itr.next
+        
+    
+    def insert_after_value(self,data_after,data_to_insert):
+        count=0
+        itr=self.head
+        while itr:
+            if itr.data==data_after:
+                self.insert_at(count,data_to_insert)
+                break
+            count+=1
+            itr=itr.next
+
+        
+        
+
+           
+            
+
+       
+        
+        
+    
+   
     def remove_at(self,index):
         if index<0 or index>=self.get_length():
             raise Exception("Invalid Index")
@@ -97,13 +129,17 @@ class LinkedList:
 
 
 if __name__=='__main__':
-    ll=LinkedList()
-    ll.insert_values(["banana","mango","graphs","Orange"])
-   
+    ll = LinkedList()
+    ll.insert_values(["banana","mango","grapes","orange"])
     ll.print()
-    print("Length: ",ll.get_length())
-    ll.remove_at(2)
-    ll.insert_at(0,"figs")
+    ll.insert_after_value("mango","apple") # insert apple after mango
     ll.print()
-    ll.insert_at(2,"jack fruit")
+    ll.remove_by_value("orange") # remove orange from linked list
+    ll.print()
+    ll.remove_by_value("figs")
+    ll.print()
+    ll.remove_by_value("banana")
+    ll.remove_by_value("mango")
+    ll.remove_by_value("apple")
+    ll.remove_by_value("grapes")
     ll.print()
